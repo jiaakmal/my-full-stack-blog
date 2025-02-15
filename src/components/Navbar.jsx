@@ -7,7 +7,7 @@ const Navbar = () => {
     <nav className="w-full h-16 md:h-20 flex items-center justify-between">
       {/* logo */}
       <div className="flex items-center gap-4 text-2xl font-bold">
-        <img src="/logo.png" alt="logo image" className="w-8 h-8" />
+        <IKImage urlEndpoint={import.meta.env.VITE_Ik_URL_ENDPOINT} path="/logo.png" alt="logo image" className="w-8 h-8" />
         <span>BlogSpot</span>
       </div>
       {/* mobile menu */}
