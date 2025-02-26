@@ -18,11 +18,10 @@ const Homepage = () => {
         {/* titles */}
         <div className="">
           <h1 className="text-2xl text-gray-800 font-bold md:text-5xl lg:text-6xl">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+          Weekly Articles with insight into the weekend's message
           </h1>
           <p className="mt-8 text-md md:text-xl">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit
-            assumenda totam sequi at odio molestias vero voluptate.
+          Our blog takes the message from the weekend and lays out next right steps, so you can hear a message and do a message in practical ways.
           </p>
         </div>
         {/* animated button */}
