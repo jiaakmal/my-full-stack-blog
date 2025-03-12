@@ -48,10 +48,10 @@ getToken().then((token) => console.log(token));
 
       {/* desktop menu */}
       <div className="hidden md:flex items-center gap-8 xl:gap-12 font-medium">
-        <Link to="/"  >Home</Link>
-        <Link to="/" >Trending</Link>
-        <Link to="/">Most Popular</Link>
-        <Link to="/" >About</Link>
+        <Link to="/" className="hover:text-blue-800" >Home</Link>
+        <Link to="/" className="hover:text-blue-800" >Trending</Link>
+        <Link to="/" className="hover:text-blue-800">Most Popular</Link>
+        <Link to="/" className="hover:text-blue-800" >About</Link>
         
         <SignedOut>
         <Link to="/login">

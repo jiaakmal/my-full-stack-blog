@@ -23,6 +23,9 @@ const SinglePostPage = () => {
   if (isPending) return "loading...";
   if (error) return "Something went wrong!" + error.message;
   if (!data) return "Post not found!";
+  const postUrl = `${window.location.origin}/posts/${slug}`;
+  const facebookShareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(postUrl)}`;
+  const instagramShareUrl = `https://www.instagram.com/`; // Instagram does not have a direct share URL
 
   return (
     <div className="flex flex-col gap-8">
@@ -156,15 +159,15 @@ const SinglePostPage = () => {
               <Link className="text-blue-800">{data.user.username}</Link>
             </div>
             <p className="text-sm text-gray-500">
-              Lorem ipsum dolor sit amet consectetur
+              Share this on 
             </p>
             <div className="flex gap-2">
-              <Link>
+              <a href={facebookShareUrl} target="_blank" rel="noopener noreferrer">
                 <Image src="facebook.svg" />
-              </Link>
-              <Link>
+              </a>
+              <a href={instagramShareUrl} target="_blank" rel="noopener noreferrer">
                 <Image src="instagram.svg" />
-              </Link>
+              </a>
             </div>
           </div>
           <PostMenuActions post={data}/>

@@ -1,5 +1,5 @@
 import { IKContext, IKUpload } from "imagekitio-react";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { toast } from "react-toastify";
 
 const authenticator = async () => {
@@ -25,6 +25,7 @@ const authenticator = async () => {
 
 const Upload = ({ children, type, setProgress, setData }) => {
   const ref = useRef(null);
+  const [preview, setPreview] = useState(null); // State to store image preview URL
 
   const onError = (err) => {
     console.log(err);
@@ -33,10 +34,21 @@ const Upload = ({ children, type, setProgress, setData }) => {
   const onSuccess = (res) => {
     console.log(res);
     setData(res);
+    setPreview(res.url); // Set the preview URL to the uploaded image URL
   };
   const onUploadProgress = (progress) => {
     console.log(progress);
     setProgress(Math.round((progress.loaded / progress.total) * 100));
+  };
+
+  const handleCancel = () => {
+    setPreview(null);
+    setData(null);
+    ref.current.value = null; // Reset the file input
+  };
+
+  const handleEdit = () => {
+    ref.current.click(); // Trigger the file input click
   };
 
   return (
@@ -57,6 +69,23 @@ const Upload = ({ children, type, setProgress, setData }) => {
       <div className="cursor-pointer" onClick={() => ref.current.click()}>
         {children}
       </div>
+      {preview && (
+        <div className="mt-2 flex items-center gap-2">
+          <img src={preview} alt="Image Preview" className="w-20 h-20 object-cover rounded-md" />
+          <button
+            className="px-2 py-1 bg-red-500 text-white rounded-md"
+            onClick={handleCancel}
+          >
+            Cancel
+          </button>
+          <button
+            className="px-2 py-1 bg-blue-500 text-white rounded-md"
+            onClick={handleEdit}
+          >
+            Edit
+          </button>
+        </div>
+      )}
     </IKContext>
   );
 };
